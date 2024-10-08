@@ -30,6 +30,7 @@ export const MyPageWrap = styled.div`
             justify-content: center;
             align-items: center;
             margin-bottom: 10px;
+            position: relative;
             label {
                 display: block;
                 width: 100px;
@@ -40,6 +41,16 @@ export const MyPageWrap = styled.div`
                 height: 40px;
                 box-sizing: border-box;
                 padding: 10px;
+            }
+            i {
+                position: absolute;
+                font-size: 20px;
+                right: 20px;
+                top: 10px;
+                cursor: pointer;
+                &:hover {
+                    color: red;
+                }
             }
         }
         .btn-wrap {

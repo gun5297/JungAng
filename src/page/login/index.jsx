@@ -8,6 +8,7 @@ import { isLogin } from '../../store/modules/authSlice';
 
 const Login = () => {
     const [user, setUser] = useState({ email: '', password: '' });
+    const [view, setView] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const onChange = (e) => {
@@ -40,11 +41,15 @@ const Login = () => {
                     <p>
                         <label>비밀번호</label>
                         <input
-                            type='password'
+                            type={view ? 'text' : 'password'}
                             name='password'
                             placeholder='비밀번호를 입력해주세요'
                             value={user.password}
                             onChange={onChange}
+                        />
+                        <i
+                            className={view ? 'xi-eye-off' : 'xi-eye-o'}
+                            onClick={() => setView(!view)}
                         />
                     </p>
                     <p>

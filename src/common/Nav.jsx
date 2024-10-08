@@ -28,7 +28,7 @@ const Nav = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link to='reservation'>
+                        <Link to={isAuth ? 'reservation' : 'login'}>
                             예약확인
                             <span>Reservation</span>
                         </Link>

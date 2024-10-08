@@ -16,12 +16,14 @@ export const LoginWrap = styled.div`
     }
     p {
         margin-bottom: 30px;
+        position: relative;
         label {
             display: block;
             width: 110px;
         }
         input[type='email'],
-        input[type='password'] {
+        input[type='password'],
+        input[type='text'] {
             margin-top: 5px;
             width: 350px;
             box-sizing: border-box;
@@ -32,6 +34,16 @@ export const LoginWrap = styled.div`
         &:last-child {
             margin-top: 50px;
             text-align: center;
+        }
+        i {
+            position: absolute;
+            font-size: 20px;
+            right: 20px;
+            top: 40px;
+            cursor: pointer;
+            &:hover {
+                color: red;
+            }
         }
     }
 `;

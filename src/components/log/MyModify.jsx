@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const MyModify = () => {
     const { login, userID } = useSelector((state) => state.auth);
+    const [view, setView] = useState(false);
     const mach = login.find((login) => login.userID === userID);
     const [dataValue, setDataValue] = useState({});
     const dispatch = useDispatch();
@@ -60,14 +61,15 @@ const MyModify = () => {
                 />
             </div>
             <div className='inp-wrap'>
-                <label htmlFor=''>비밀번호</label>
+                <label>비밀번호</label>
                 <input
-                    type='password'
+                    type={view ? 'text' : 'password'}
                     name='password'
-                    id='password'
+                    placeholder='비밀번호를 입력해주세요'
                     value={dataValue.password}
                     onChange={onChange}
                 />
+                <i className={view ? 'xi-eye-off' : 'xi-eye-o'} onClick={() => setView(!view)} />
             </div>
             <div className='btn-wrap'>
                 <Button type='submit' width='200px'>
