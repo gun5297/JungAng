@@ -4,6 +4,7 @@ import Layout from './common/Layout';
 import GlobalStyle from './styled/GlobalStyle';
 import SubLayout from './common/SubLayout';
 import QnaAddForm from './components/qna/QnaAddForm';
+import QnaEditForm from './components/qna/QnaEditForm';
 
 const App = () => {
     return (
@@ -21,6 +22,7 @@ const App = () => {
                             <Route index element={<QnA />} />
                             <Route path=':contentID' element={<QnAbody />} />
                             <Route path='newadd' element={<QnaAddForm />} />
+                            <Route path='editqna/:contentID' element={<QnaEditForm />} />
                         </Route>
                         <Route path='reservation' element={<Rservation />} />
                         <Route path='login' element={<Login />} />

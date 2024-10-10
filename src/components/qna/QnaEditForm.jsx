@@ -1,22 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { QnaAddFormWrap } from './styled';
 import { InnerWrap } from '../../styled/Style';
 import { Button } from '../../ui/styled';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { isAddNew } from '../../store/modules/qnaSlice';
+import { isChangeQnA } from '../../store/modules/qnaSlice';
 
-const QnaAddForm = () => {
-    const { user, userID } = useSelector((state) => state.auth);
-    const [inpData, setInpData] = useState({ title: '', body: '' });
-    const [isDate, setIsDate] = useState(new Date());
-    const date = {
-        year: isDate.getFullYear(),
-        month: isDate.getMonth() + 1,
-        day: isDate.getDate(),
-        hours: isDate.getHours(),
-        minutes: isDate.getMinutes(),
-    };
+const QnaEditForm = ({}) => {
+    const { contentID } = useParams();
+    const { qna } = useSelector((state) => state.qna);
+    const onQna = qna.find((qna) => qna.id === Number(contentID));
+    const [inpData, setInpData] = useState({ title: onQna.title, body: onQna.body });
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const onChange = (e) => {
@@ -25,19 +19,13 @@ const QnaAddForm = () => {
     };
     const onSubmit = (e) => {
         e.preventDefault();
-        dispatch(isAddNew({ user, userID, ...inpData, date }));
+        dispatch(isChangeQnA({ contentID, ...inpData }));
         navigate('/qna');
     };
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setIsDate(new Date());
-        }, 1000);
-        return () => clearInterval(timer);
-    }, []);
     return (
         <QnaAddFormWrap onSubmit={onSubmit}>
             <InnerWrap className='inner'>
-                <h2>글 작성</h2>
+                <h2>수정하기</h2>
                 <div className='inp-wrap title'>
                     <label htmlFor='title'>제목</label>
                     <input
@@ -59,15 +47,12 @@ const QnaAddForm = () => {
                     />
                 </div>
                 <div className='btn-wrap'>
-                    <Button type='submit'>등록</Button>
-                    <Button onClick={() => navigate(-1)}>취소</Button>
+                    <Button type='submit'>수정</Button>
+                    <Button onClick={() => navigate(`/qna/${contentID}`)}>취소</Button>
                 </div>
-                <span className='date-wrap'>
-                    {date.year}년 {date.month}월 {date.day}일 {date.hours}시 {date.minutes}분
-                </span>
             </InnerWrap>
         </QnaAddFormWrap>
     );
 };
 
-export default QnaAddForm;
+export default QnaEditForm;

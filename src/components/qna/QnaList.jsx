@@ -15,8 +15,12 @@ const QnaList = () => {
     if (qna && !loading)
         return (
             <QnaListWrap>
-                {qna.map((qna) => qna.isPin === true && <QnaItem key={qna.id} {...qna} />)}
-                {qna.map((qna) => qna.isPin === false && <QnaItem key={qna.id} {...qna} />)}
+                {qna.map(
+                    (qna, idx) => qna.isPin === true && <QnaItem key={qna.id} {...qna} idx={idx} />
+                )}
+                {qna.map(
+                    (qna, idx) => qna.isPin === false && <QnaItem key={qna.id} {...qna} idx={idx} />
+                )}
             </QnaListWrap>
         );
 };

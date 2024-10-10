@@ -8,18 +8,39 @@ export const QnaListWrap = styled.ul`
         border: 1px solid var(--main-color);
         margin-bottom: 10px;
         border-radius: 10px;
-        box-sizing: border-box;
-        padding: 10px 50px;
         user-select: none;
         cursor: pointer;
+        position: relative;
+        &:hover {
+            background: #efebe9;
+        }
         &.active {
             background: var(--main-color);
             color: #fafafa;
+            &:hover {
+                background: #4e342e;
+            }
+        }
+        div.click-wrap {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px 50px;
         }
         p {
             font-size: 18px;
             &:first-child {
                 width: 50px;
+            }
+        }
+        i {
+            position: absolute;
+            right: -30px;
+            transition: 0.3s;
+            color: #000;
+            &:hover {
+                transform: scale(1.2);
             }
         }
     }

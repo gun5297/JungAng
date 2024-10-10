@@ -37,6 +37,17 @@ export const QnAbodyWrap = styled.div`
                 > p {
                     margin-bottom: 10px;
                 }
+                form {
+                    display: flex;
+                    width: 100%;
+                    align-items: center;
+                    margin-bottom: 10px;
+                    input {
+                        width: 100%;
+                        height: 40px;
+                        box-sizing: border-box;
+                    }
+                }
                 ul {
                     li {
                         border: 1px solid var(--main-color);

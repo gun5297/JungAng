@@ -7,16 +7,37 @@ const initialState = {
     error: null,
 };
 
-let no = initialState.qna.length + 1;
-
 export const qnaSlice = createSlice({
     name: 'qnaSlice',
     initialState,
     reducers: {
         isAddNew: (state, action) => {
             const { title, body, user, userID, date } = action.payload;
-            const newQna = { id: no++, title, body, userID, user, date, isPin: false };
+            const newQna = {
+                id: Math.floor(Math.random() * 10000),
+                title,
+                body,
+                userID,
+                user,
+                date,
+                isPin: false,
+            };
             state.qna.push(newQna);
+            localStorage.setItem('JungAngQnAList', JSON.stringify(state.qna));
+        },
+        isPinChange: (state, action) => {
+            const onQna = state.qna.find((qna) => qna.id === action.payload);
+            onQna.isPin = !onQna.isPin;
+        },
+        isDelQnA: (state, action) => {
+            state.qna = state.qna.filter((qna) => qna.id !== action.payload);
+            localStorage.setItem('JungAngQnAList', JSON.stringify(state.qna));
+        },
+        isChangeQnA: (state, action) => {
+            const { contentID, title, body } = action.payload;
+            const onQna = state.qna.find((qna) => qna.id === Number(contentID));
+            onQna.title = title;
+            onQna.body = body;
             localStorage.setItem('JungAngQnAList', JSON.stringify(state.qna));
         },
     },
@@ -31,7 +52,6 @@ export const qnaSlice = createSlice({
                     (action) => !state.qna.find((qna) => qna.id === action.id)
                 );
                 state.qna = [...state.qna, ...newQna];
-                no = state.qna.length + 1;
                 state.loading = false;
                 state.error = null;
                 localStorage.setItem('JungAngQnAList', JSON.stringify(state.qna));
@@ -43,5 +63,5 @@ export const qnaSlice = createSlice({
     },
 });
 
-export const { isAddNew } = qnaSlice.actions;
+export const { isAddNew, isPinChange, isDelQnA, isChangeQnA } = qnaSlice.actions;
 export default qnaSlice.reducer;
