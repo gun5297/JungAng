@@ -10,13 +10,13 @@ const Nav = () => {
             <div className='left'>
                 <ul className='nav'>
                     <li>
-                        <Link to='details/bluectiy'>
+                        <Link to='details/bluectiy/1'>
                             블루시티
                             <span>전세/월세</span>
                         </Link>
                     </li>
                     <li>
-                        <Link to='details/dupluse'>
+                        <Link to='details/dupluse/1'>
                             두플라스
                             <span>전세/월세</span>
                         </Link>

@@ -60,6 +60,10 @@ export const LIKELIST = styled.ul`
                 cursor: pointer;
                 color: red;
             }
+            span {
+                color: #fafafa;
+                font-weight: 700;
+            }
         }
         .text-wrap {
             display: flex;
@@ -68,16 +72,55 @@ export const LIKELIST = styled.ul`
             justify-content: space-between;
             font-size: 20px;
             margin-bottom: 10px;
+            .won {
+                margin-bottom: 20px;
+            }
             span {
                 display: block;
                 margin-right: 20px;
             }
             p {
                 font-size: 25px;
+                font-weight: 700;
+                color: var(--main-color);
+
+                &.t {
+                    width: 100%;
+                    text-align: center;
+                    margin: 10px 0;
+                    background: var(--main-color);
+                    opacity: 0.7;
+                    border-radius: 10px;
+                    color: #fafafa;
+                    box-sizing: border-box;
+                    padding: 5px;
+                    font-size: 20px;
+                }
                 em {
                     margin: 0px 5px;
                 }
             }
+            ul {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                width: 100%;
+                li {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    margin-right: 5px;
+                    margin-bottom: 5px;
+                    opacity: 0.5;
+                    background-color: rgba(0, 0, 0, 0.2);
+                    padding: 2px 5px;
+                    font-size: 12px;
+                    text-align: center;
+                }
+            }
+        }
+        .btn-wrap {
+            margin-top: 20px;
         }
     }
 `;
@@ -94,5 +137,23 @@ export const VISUALWRAP = styled.div`
                 opacity: 1;
             }
         }
+    }
+    .swiper {
+        width: 100%;
+        height: 100%;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 `;
