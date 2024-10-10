@@ -4,7 +4,6 @@ import { QnaListWrap } from './styled';
 import Spinner from '../../common/Spinner';
 import { useEffect } from 'react';
 import { getQna } from '../../store/modules/getThunk';
-import { InnerWrap } from '../../styled/Style';
 
 const QnaList = () => {
     const { qna, loading, error } = useSelector((state) => state.qna);
@@ -15,12 +14,10 @@ const QnaList = () => {
     if (loading) return <Spinner />;
     if (qna && !loading)
         return (
-            <InnerWrap>
-                <QnaListWrap>
-                    {qna.map((qna) => qna.isPin === true && <QnaItem key={qna.id} {...qna} />)}
-                    {qna.map((qna) => qna.isPin === false && <QnaItem key={qna.id} {...qna} />)}
-                </QnaListWrap>
-            </InnerWrap>
+            <QnaListWrap>
+                {qna.map((qna) => qna.isPin === true && <QnaItem key={qna.id} {...qna} />)}
+                {qna.map((qna) => qna.isPin === false && <QnaItem key={qna.id} {...qna} />)}
+            </QnaListWrap>
         );
 };
 

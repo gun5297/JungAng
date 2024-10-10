@@ -4,11 +4,11 @@ import { v4 as uuidv4 } from 'uuid';
 const initialState = {
     login: JSON.parse(localStorage.getItem('JungAngUserList')) || [
         {
-            userID: 1,
-            name: 'Admin',
+            userID: 'admin',
+            name: '관리자',
             tel: '010-1234-1234',
             email: 'admin@admin.com',
-            password: 'admin',
+            password: '1234',
         },
         {
             userID: 2,

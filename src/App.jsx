@@ -3,6 +3,7 @@ import { Information, Login, Main, Mypage, QnA, QnAbody, Register, Rservation } 
 import Layout from './common/Layout';
 import GlobalStyle from './styled/GlobalStyle';
 import SubLayout from './common/SubLayout';
+import QnaAddForm from './components/qna/QnaAddForm';
 
 const App = () => {
     return (
@@ -19,6 +20,7 @@ const App = () => {
                         <Route path='qna'>
                             <Route index element={<QnA />} />
                             <Route path=':contentID' element={<QnAbody />} />
+                            <Route path='newadd' element={<QnaAddForm />} />
                         </Route>
                         <Route path='reservation' element={<Rservation />} />
                         <Route path='login' element={<Login />} />
