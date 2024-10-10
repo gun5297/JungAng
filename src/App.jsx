@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom';
 import { Information, Login, Main, Mypage, QnA, QnAbody, Register, Rservation } from './page';
 import Layout from './common/Layout';
 import GlobalStyle from './styled/GlobalStyle';
