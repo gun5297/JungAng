@@ -90,14 +90,8 @@ const initialState = {
 export const roomSlice = createSlice({
     name: 'roomSlice',
     initialState,
-    reducers: {
-        isLikeChange: (state, action) => {
-            const { category, id, cnt } = action.payload;
-            const like = state.room[category].find((room) => room.id === id);
-            like.like = like.like += cnt;
-        },
-    },
+    reducers: {},
 });
 
-export const { isLikeChange } = roomSlice.actions;
+// export const {} = roomSlice.actions;
 export default roomSlice.reducer;

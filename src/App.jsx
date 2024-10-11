@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom';
 import { Information, Login, Main, Mypage, QnA, QnAbody, Register, Rservation } from './page';
-import Layout from './common/Layout';
 import GlobalStyle from './styled/GlobalStyle';
-import SubLayout from './common/SubLayout';
 import QnaAddForm from './components/qna/QnaAddForm';
 import QnaEditForm from './components/qna/QnaEditForm';
 import RoomInfo from './components/room/RoomInfo';
+import { Layout, SubLayout } from './common';
+import ReservationaAddForm from './components/reservation/ReservationaAddForm';
 
 const App = () => {
     return (
@@ -32,6 +32,10 @@ const App = () => {
                         <Route path='register' element={<Register />} />
                         <Route path='mypage' element={<Mypage />} />
                         <Route path=':category/:datanum' element={<RoomInfo />} />
+                        <Route
+                            path='details/:category/:datanum/reservation'
+                            element={<ReservationaAddForm />}
+                        />
                     </Route>
                 </Routes>
             </BrowserRouter>

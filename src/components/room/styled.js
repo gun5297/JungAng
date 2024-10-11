@@ -54,6 +54,7 @@ export const RoomItemWrap = styled.li`
 `;
 export const RoomInfoWrap = styled.div`
     width: 100%;
+    overflow: hidden;
     h2 {
         border-bottom: 1px solid var(--main-color);
         padding-bottom: 50px;
@@ -65,46 +66,41 @@ export const RoomInfoWrap = styled.div`
         align-items: center;
         flex-wrap: wrap;
         p {
-                width: 50%;
-                text-align: center;
-                font-weight: 700;
-                font-size: 50px;
-                color: var(--main-color);
-                line-height: 5;
-            }
+            width: 50%;
+            text-align: center;
+            font-weight: 700;
+            font-size: 50px;
+            color: var(--main-color);
+            line-height: 5;
         }
-        ul {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 50px;
-            li {
-                &.t{
-                    width: 40%;
-                    margin-bottom: 50px;
-                    background: #fafafa;
-                    color: var(--main-color);
-                    border: 1px solid var(--main-color);
-                    text-align: center;
-                    i{
-                        cursor: pointer;
-                    }
-                    &.active{
-                        i{
-                            color: red;
-                        }
-                    }
+    }
+    ul {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 50px;
+        li {
+            &.t {
+                width: 40%;
+                margin-bottom: 50px;
+                background: #fafafa;
+                color: var(--main-color);
+                border: 1px solid var(--main-color);
+                text-align: center;
+                i {
+                    color: red;
+                    margin-right: 10px;
                 }
-                &:not(:last-of-type) {
-                    margin-right: 20px;
-                }
-                font-size: 20px;
-                background: var(--main-color);
-                padding: 10px 30px;
-                color: #fafafa;
-                border-radius: 10px;
             }
+            &:not(:last-of-type) {
+                margin-right: 20px;
+            }
+            font-size: 20px;
+            background: var(--main-color);
+            padding: 10px 30px;
+            color: #fafafa;
+            border-radius: 10px;
         }
     }
     .img-wrap {
@@ -123,6 +119,15 @@ export const RoomInfoWrap = styled.div`
             }
             span {
             }
+        }
+    }
+    .btn-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+        button.btn {
+            font-size: 20px;
         }
     }
 `;

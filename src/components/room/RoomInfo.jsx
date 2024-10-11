@@ -1,16 +1,18 @@
 import { useSelector } from 'react-redux';
 import { RoomInfoWrap } from './styled';
-import { useParams } from 'react-router-dom';
-import Like from './Like';
+import { useNavigate, useParams } from 'react-router-dom';
 import { InnerWrap } from '../../styled/Style';
 import { useEffect } from 'react';
+import { Button } from '../../ui/styled';
 
 const RoomInfo = () => {
     const { datanum, category } = useParams();
     const { room } = useSelector((state) => state.room);
+    const { isAuth } = useSelector((state) => state.auth);
     const isRoom = room[category];
     const onRoom = isRoom.find((room) => room.id === Number(datanum));
     const { id, imgTag, img, like, deposit, rent, title, type, keyword } = onRoom;
+    const navigate = useNavigate();
     const imgnum = [];
     for (let i = 1; i <= img; i++) {
         imgnum.push(i);
@@ -27,7 +29,10 @@ const RoomInfo = () => {
                     <p className='w'>월세: {rent}만원</p>
                     <ul>
                         <li className='t'>{type}</li>
-                        <Like id={id} />
+                        <li className='t'>
+                            <i className='xi-heart' />
+                            관심 수 : {like}
+                        </li>
                         {keyword.map((key, idx) => (
                             <li key={idx}>#{key}</li>
                         ))}
@@ -40,6 +45,21 @@ const RoomInfo = () => {
                             <span>{idx + 1}</span>
                         </article>
                     ))}
+                </div>
+
+                <div className='btn-wrap'>
+                    <Button
+                        className='btn'
+                        width='300px'
+                        height='60px'
+                        onClick={() =>
+                            isAuth
+                                ? navigate(`/details/${category}/${datanum}/reservation`)
+                                : navigate('/login')
+                        }
+                    >
+                        예약하기
+                    </Button>
                 </div>
             </InnerWrap>
         </RoomInfoWrap>

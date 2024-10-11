@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 
 export const HeaderWrap = styled.header`
+    position: sticky;
+    top: 0;
     width: 100%;
     background: #fff;
     border-bottom: 1px solid #d7ccc8;
     box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
     z-index: 99999;
+    opacity: 0.95;
+    backdrop-filter: blur(10px);
     h1 {
         width: 250px;
         height: 80px;
