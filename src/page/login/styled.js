@@ -46,4 +46,13 @@ export const LoginWrap = styled.div`
             }
         }
     }
+    em {
+        &:not(:first-of-type) {
+            cursor: pointer;
+            &:hover {
+                font-weight: 700;
+            }
+        }
+        margin-right: 10px;
+    }
 `;

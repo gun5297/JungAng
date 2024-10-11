@@ -57,6 +57,23 @@ const Login = () => {
                             로그인
                         </Button>
                     </p>
+                    <em>빠른로그인</em>
+                    <em
+                        onClick={() => {
+                            dispatch(isLogin({ email: 'admin@admin.com', password: '1234' }));
+                            navigate('/');
+                        }}
+                    >
+                        어드민
+                    </em>
+                    <em
+                        onClick={() => {
+                            dispatch(isLogin({ email: 'test@naver.com', password: '1234' }));
+                            navigate('/');
+                        }}
+                    >
+                        테스터
+                    </em>
                 </form>
             </InnerWrap>
         </LoginWrap>
