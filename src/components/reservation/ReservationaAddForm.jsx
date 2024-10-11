@@ -34,7 +34,7 @@ const ReservationaAddForm = () => {
     const notday = isDay.filter((day) => !resday.includes(day));
     const onSubmit = (e) => {
         e.preventDefault();
-        dispatch(isNewRes({ roomID: id, userID, user, ...isSel }));
+        dispatch(isNewRes({ roomID: id, userID, user, ...isSel, category }));
         alert(`${user}님 ${title} 예약되었습니다.`);
         navigate('/reservation');
     };
@@ -49,23 +49,30 @@ const ReservationaAddForm = () => {
                     <p>
                         {type} | {deposit} / {rent}만원
                     </p>
-                    <ul className='calendar'>
-                        {notday.map((day) => (
-                            <li
-                                key={day}
-                                className={
-                                    isSel.mo === date[cnt].mo && isSel.day === day
-                                        ? 'day active'
-                                        : 'day'
-                                }
-                                onClick={() => {
-                                    setIsSel({ mo: date[cnt].mo, day });
-                                }}
-                            >
-                                {date[cnt].mo}/{day}
-                            </li>
-                        ))}
-                    </ul>
+                    {notday.length !== 0 ? (
+                        <ul className='calendar'>
+                            {notday.map((day) => (
+                                <li
+                                    key={day}
+                                    className={
+                                        isSel.mo === date[cnt].mo && isSel.day === day
+                                            ? 'day active'
+                                            : 'day'
+                                    }
+                                    onClick={() => {
+                                        setIsSel({ mo: date[cnt].mo, day });
+                                    }}
+                                >
+                                    {date[cnt].mo}/{day}
+                                </li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <div>
+                            <p>예약 가능한 날짜가 없습니다.</p>
+                        </div>
+                    )}
+
                     <div className='calendar-btn-wrap'>
                         <i onClick={() => chnageCnt('prev')} className='xi-angle-left' />
                         <i onClick={() => chnageCnt('next')} className='xi-angle-right' />

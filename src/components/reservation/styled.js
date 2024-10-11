@@ -65,3 +65,37 @@ export const ReservationaAddFormWrap = styled.form`
         }
     }
 `;
+export const ReservationItemWrap = styled.li`
+    width: 49%;
+    box-sizing: border-box;
+    display: flex;
+    margin-bottom: 1%;
+    box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+    &:not(:nth-child(n2)) {
+        margin-right: 1%;
+    }
+    .img-wrap {
+        width: 50%;
+        height: 400px;
+        overflow: hidden;
+        img {
+            width: 100%;
+        }
+    }
+    .text-wrap {
+        font-size: 18px;
+        width: 50%;
+        box-sizing: border-box;
+        padding: 50px;
+        p {
+            margin-bottom: 5px;
+        }
+        .btn-wrap {
+            margin-top: 50px;
+        }
+        .title {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+    }
+`;

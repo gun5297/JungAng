@@ -18,7 +18,9 @@ export const reservationSlice = createSlice({
             state.reservation.push(newRes);
             localStorage.setItem('JungAngReservationList', JSON.stringify(state.reservation));
         },
-        isDelRes: (state, action) => {},
+        isDelRes: (state, action) => {
+            state.reservation = state.reservation.filter((res) => res.id !== action.payload);
+        },
     },
 });
 

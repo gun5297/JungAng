@@ -35,7 +35,7 @@ export const authSlice = createSlice({
                 state.user = null;
             } else {
                 const userID = uuidv4();
-                const newUser = { userID, name, tel, email, password };
+                const newUser = { userID, name, tel, email, password, isNew: true };
                 state.login.push(newUser);
                 alert(`${name}님 환영합니다`);
                 state.isAuth = true;

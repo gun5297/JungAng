@@ -9,7 +9,7 @@ export const qnaTagSlice = createSlice({
     initialState,
     reducers: {
         isNewTagAdd: (state, action) => {
-            const newTag = { id: Math.floor(Math.random() * 9999), ...action.payload };
+            const newTag = { id: Math.floor(Math.random() * 9999), ...action.payload, isNew: true };
             state.qnaTag.push(newTag);
             localStorage.setItem('JungAngQnATagList', JSON.stringify(state.qnaTag));
         },

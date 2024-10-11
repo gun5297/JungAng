@@ -1,5 +1,15 @@
-import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom';
-import { Information, Login, Main, Mypage, QnA, QnAbody, Register, Rservation } from './page';
+import { BrowserRouter, Routes, Route, HashRouter, Link } from 'react-router-dom';
+import {
+    Admin,
+    Information,
+    Login,
+    Main,
+    Mypage,
+    QnA,
+    QnAbody,
+    Register,
+    Rservation,
+} from './page';
 import GlobalStyle from './styled/GlobalStyle';
 import QnaAddForm from './components/qna/QnaAddForm';
 import QnaEditForm from './components/qna/QnaEditForm';
@@ -37,6 +47,7 @@ const App = () => {
                             element={<ReservationaAddForm />}
                         />
                     </Route>
+                    <Route path='/admin' element={<Admin />} />
                 </Routes>
             </BrowserRouter>
         </>

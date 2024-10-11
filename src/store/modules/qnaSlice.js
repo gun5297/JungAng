@@ -21,6 +21,7 @@ export const qnaSlice = createSlice({
                 user,
                 date,
                 isPin: false,
+                isNew: true,
             };
             state.qna.push(newQna);
             localStorage.setItem('JungAngQnAList', JSON.stringify(state.qna));
