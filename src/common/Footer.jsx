@@ -10,7 +10,7 @@ const Footer = () => {
                         <Link to='details/bluectiy/1'>블루시티</Link>
                     </li>
                     <li>
-                        <Link to='details/dupluse/1'>두플라스</Link>
+                        <Link to='details/dupluse/1'>두플러스</Link>
                     </li>
                     <li>
                         <Link to='qna'>문의하기</Link>

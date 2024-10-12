@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     line-height: 1.6;
     font-family: "Noto Sans KR";    
+    color: var(--main-color);
   }
   a {
     text-decoration: none;
