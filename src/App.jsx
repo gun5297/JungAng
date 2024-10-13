@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, HashRouter, Link } from 'react-router-dom';
 import {
     Admin,
+    Findingaway,
     Information,
     Login,
     Main,
@@ -48,6 +49,7 @@ const App = () => {
                             path='details/:category/:datanum/reservation'
                             element={<ReservationaAddForm />}
                         />
+                        <Route path='findingaway' element={<Findingaway />} />
                     </Route>
                     <Route path='/admin' element={<Admin />} />
                 </Routes>

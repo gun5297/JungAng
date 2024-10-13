@@ -7,3 +7,39 @@ export const getQna = createAsyncThunk('qna/getQna', async () => {
     );
     return res.data;
 });
+
+export const getMap = createAsyncThunk('map/getMap', async (coords, { rejectWithValue }) => {
+    try {
+        const script = document.createElement('script');
+        script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=e4dad3bfb844132fb3652661002608f9&autoload=false`;
+        script.async = true;
+        document.head.appendChild(script);
+
+        await new Promise((resolve) => {
+            script.onload = () => {
+                window.kakao.maps.load(() => {
+                    const container = document.getElementById('map');
+                    const options = {
+                        center: new window.kakao.maps.LatLng(coords.lat, coords.lng), // 좌표로 지도 중심 설정
+                        level: 3,
+                    };
+                    new window.kakao.maps.Map(container, options);
+                    resolve(true);
+                });
+            };
+        });
+
+        const response = await axios.get(
+            `https://dapi.kakao.com/v2/local/geo/coord2address.json?x=${coords.lng}&y=${coords.lat}`,
+            {
+                headers: {
+                    Authorization: `e4dad3bfb844132fb3652661002608f9`, // REST API 키 필요
+                },
+            }
+        );
+
+        return response.data; // API 응답 데이터 리턴
+    } catch (error) {
+        return rejectWithValue(error.message);
+    }
+});

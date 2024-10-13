@@ -33,6 +33,12 @@ const Nav = () => {
                             <span>Reservation</span>
                         </Link>
                     </li>
+                    {/* <li>
+                        <Link to='findingaway'>
+                            찾아오시는길
+                            <span>FindingAway</span>
+                        </Link>
+                    </li> */}
                 </ul>
             </div>
             <div className='right'>
