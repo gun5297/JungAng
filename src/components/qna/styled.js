@@ -13,6 +13,9 @@ export const QnaListWrap = styled.ul`
         position: relative;
         &:hover {
             background: #efebe9;
+            span {
+                opacity: 0.5;
+            }
         }
         &.active {
             background: var(--main-color);
@@ -31,7 +34,7 @@ export const QnaListWrap = styled.ul`
         p {
             font-size: 18px;
             &:first-child {
-                width: 50px;
+                width: 110px;
             }
         }
         i {
@@ -42,6 +45,19 @@ export const QnaListWrap = styled.ul`
             &:hover {
                 transform: scale(1.2);
             }
+        }
+        span {
+            display: block;
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.01;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 300px;
+            text-align: end;
         }
     }
 `;
@@ -82,6 +98,27 @@ export const QnaAddFormWrap = styled.form`
             position: absolute;
             right: 0;
             bottom: 100px;
+        }
+    }
+`;
+export const QnaPagingWrap = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 80px 0;
+    a {
+        padding: 0 10px;
+        position: relative;
+        &:hover::after {
+            content: '';
+            width: 50%;
+            height: 2px;
+            background: #424242;
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
         }
     }
 `;

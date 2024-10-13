@@ -83,8 +83,25 @@ export const authSlice = createSlice({
             );
             localStorage.setItem('JungAngUserList', JSON.stringify(state.login));
         },
+        isNewChangeLogin: (state, action) => {
+            const sellogin = state.login.find((login) => login.userID === action.payload);
+            sellogin.isNew = false;
+            localStorage.setItem('JungAngUserList', JSON.stringify(state.login));
+        },
+        allNewChangeLogin: (state) => {
+            state.login = state.login.map((login) => ({ ...login, isNew: false }));
+            localStorage.setItem('JungAngUserList', JSON.stringify(state.login));
+        },
     },
 });
 
-export const { isRegister, isLogin, isLogout, isChange, isKeyWord } = authSlice.actions;
+export const {
+    isRegister,
+    isLogin,
+    isLogout,
+    isChange,
+    isKeyWord,
+    isNewChangeLogin,
+    allNewChangeLogin,
+} = authSlice.actions;
 export default authSlice.reducer;

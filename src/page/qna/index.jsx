@@ -8,9 +8,10 @@ import { useSelector } from 'react-redux';
 const QnA = () => {
     const { isAuth } = useSelector((state) => state.auth);
     const navigate = useNavigate();
+
     return (
         <QnAWrap>
-            <InnerWrap>
+            <InnerWrap className='inner'>
                 <h2>Q&A</h2>
                 <QnaList />
                 <div className='btn-wrap'>

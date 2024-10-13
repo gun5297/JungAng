@@ -4,9 +4,17 @@ import Footer from './Footer';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 const Layout = () => {
-    const { userID } = useSelector((state) => state.auth);
+    const { login, userID } = useSelector((state) => state.auth);
+    const { qna } = useSelector((state) => state.qna);
+    const { qnaTag } = useSelector((state) => state.qnaTag);
     const { reservation } = useSelector((state) => state.reservation);
-    const isNew = reservation.flatMap((res) => res.isNew);
+
+    const isLoginNew = login.filter((login) => login.isNew);
+    const isQnaNew = qna.filter((qna) => qna.isNew);
+    const isQnaTagNew = qnaTag.filter((tag) => tag.isNew);
+    const isResNew = reservation.filter((res) => res.isNew);
+
+    const isNew = isLoginNew.length + isQnaNew.length + isQnaTagNew.length + isResNew.length;
     const [on, setOn] = useState(true);
     useEffect(() => {
         if (userID === 'admin') {
@@ -19,9 +27,9 @@ const Layout = () => {
             {userID === 'admin' && (
                 <Link to='/admin' onClick={() => setOn(false)}>
                     <div className='admin-nav'>Go Admin Page</div>
-                    {isNew.length > 0 && on && (
+                    {isNew > 0 && on && (
                         <div className='admin-bg'>
-                            <p>{isNew.length}개의 신규 알림이 있습니다.</p>
+                            <p>{isNew}개의 신규 알림이 있습니다.</p>
                         </div>
                     )}
                 </Link>

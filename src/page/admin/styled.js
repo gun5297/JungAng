@@ -10,7 +10,6 @@ export const AdminWrap = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 80px;
         h1 {
             height: 100px;
             cursor: pointer;
@@ -20,6 +19,7 @@ export const AdminWrap = styled.div`
         }
     }
     .event-len {
+        margin-bottom: 80px;
         ul {
             display: flex;
             justify-content: center;
@@ -30,13 +30,80 @@ export const AdminWrap = styled.div`
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                background-color: var(--main-color);
-                color: #fafafa;
-                margin-right: 20px;
                 flex-direction: column;
-                border-radius: 10px;
+                border: 2px solid var(--main-color);
+                transition: all 0.5s;
+                cursor: pointer;
+
+                &:not(:last-of-type) {
+                    border-right: none;
+                }
+                &:hover {
+                    background: var(--main-color);
+                    color: #fafafa;
+                }
                 p {
                     font-size: 20px;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+    .data-list {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        h3 {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+        ul {
+            width: 49%;
+            border: 1px solid var(--main-color);
+            box-sizing: border-box;
+            padding: 20px;
+            margin-bottom: 1%;
+            position: relative;
+            span {
+                color: #fafafa;
+                background: var(--main-color);
+                width: 50px;
+                text-align: center;
+                padding: 3px 0;
+                box-sizing: border-box;
+                display: block;
+                margin-right: 10px;
+                font-size: 12px;
+                transition: all 0.3s;
+                cursor: pointer;
+                &.all {
+                    position: absolute;
+                    right: 20px;
+                    top: 20px;
+                    font-size: 16px;
+                    width: 100px;
+                }
+                &:hover {
+                    background: #6d4c41;
+                }
+            }
+            &:not(:nth-child(2n)) {
+                margin-right: 1%;
+            }
+            li {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+                p {
+                    margin-right: 10px;
+                    min-width: 130px;
+                    max-width: 250px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
             }
         }

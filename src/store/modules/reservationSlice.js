@@ -21,8 +21,17 @@ export const reservationSlice = createSlice({
         isDelRes: (state, action) => {
             state.reservation = state.reservation.filter((res) => res.id !== action.payload);
         },
+        isNewChangeRes: (state, action) => {
+            const selRes = state.reservation.find((res) => res.id === action.payload);
+            selRes.isNew = false;
+            localStorage.setItem('JungAngReservationList', JSON.stringify(state.reservation));
+        },
+        allNewChangeRes: (state) => {
+            state.reservation = state.reservation.map((res) => ({ ...res, isNew: false }));
+            localStorage.setItem('JungAngReservationList', JSON.stringify(state.reservation));
+        },
     },
 });
 
-export const { isNewRes, isDelRes } = reservationSlice.actions;
+export const { isNewRes, isDelRes, isNewChangeRes, allNewChangeRes } = reservationSlice.actions;
 export default reservationSlice.reducer;
