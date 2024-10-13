@@ -7,3 +7,4 @@ export { default as QnA } from './qna';
 export { default as Rservation } from './reservation';
 export { default as QnAbody } from './qnabody';
 export { default as Admin } from './admin';
+export { default as Search } from './search';

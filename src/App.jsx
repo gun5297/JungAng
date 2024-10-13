@@ -9,6 +9,7 @@ import {
     QnAbody,
     Register,
     Rservation,
+    Search,
 } from './page';
 import GlobalStyle from './styled/GlobalStyle';
 import QnaAddForm from './components/qna/QnaAddForm';
@@ -25,6 +26,7 @@ const App = () => {
                 <Routes>
                     <Route path='/' element={<Layout />}>
                         <Route index element={<Main />} />
+                        <Route path='search/:keyword' element={<Search />} />
                         <Route path='details'>
                             <Route index element={<SubLayout />} />
                             <Route path=':category' element={<Information />}>

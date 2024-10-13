@@ -36,6 +36,7 @@ export const LIKELIST = styled.ul`
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 80px;
     li {
         width: 25%;
         padding: 20px;
@@ -155,5 +156,58 @@ export const VISUALWRAP = styled.div`
         width: 100%;
         height: 100%;
         object-fit: cover;
+    }
+`;
+
+export const SearchItemWrap = styled.li`
+    width: 24%;
+    box-sizing: border-box;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+    padding: 0px 10px;
+    opacity: 0.9;
+    transition: 0.3s;
+    margin-bottom: 50px;
+    &:hover {
+        opacity: 1;
+    }
+    &:not(:nth-child(4n)) {
+        margin-right: 1%;
+    }
+    .img-wrap {
+        width: 100%;
+        img {
+            width: 100%;
+        }
+    }
+    .text-wrap {
+        margin: 20px 0;
+        p {
+            font-size: 20px;
+        }
+        ul {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            justify-content: start;
+            margin-top: 20px;
+            height: 25px;
+            overflow: hidden;
+            li {
+                margin-right: 3px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                margin-right: 5px;
+                margin-bottom: 5px;
+                opacity: 0.5;
+                background-color: rgba(0, 0, 0, 0.2);
+                padding: 2px 5px;
+                font-size: 12px;
+                text-align: center;
+            }
+        }
+    }
+    .btn-wrap {
+        margin-bottom: 20px;
     }
 `;
