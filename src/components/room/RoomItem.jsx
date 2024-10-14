@@ -4,6 +4,12 @@ import { useNavigate } from 'react-router-dom';
 
 const RoomItem = ({ id, Bigimg, title, type, keyword }) => {
     const navigate = useNavigate();
+    const onClick = () => {
+        window.scrollTo({
+            top: 1000,
+            behavior: 'smooth',
+        });
+    };
     return (
         <RoomItemWrap onClick={() => navigate(`${id}`)}>
             <div className='img-wrap'>
@@ -18,7 +24,7 @@ const RoomItem = ({ id, Bigimg, title, type, keyword }) => {
                     ))}
                 </p>
                 <p className='btn-wrap'>
-                    <Button>자세히보기</Button>
+                    <Button onClick={onClick}>자세히보기</Button>
                 </p>
             </div>
         </RoomItemWrap>

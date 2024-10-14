@@ -16,6 +16,9 @@ const QnAbody = () => {
     const onQna = qna.find((qna) => qna.id === Number(contentID));
     const dispacth = useDispatch();
     const navigate = useNavigate();
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <QnAbodyWrap>
             <InnerWrap className='inner'>

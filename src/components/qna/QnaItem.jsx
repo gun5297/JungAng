@@ -6,6 +6,7 @@ const QnaItem = ({ id, title, body, isPin, date }) => {
     const { userID } = useSelector((state) => state.auth);
     const navigate = useNavigate();
     const dispacth = useDispatch();
+
     return (
         <li className={isPin ? 'active' : ''}>
             <div className='click-wrap' onClick={() => navigate(`${id}`)}>
