@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 // API Key는 환경 변수로 관리하는 것이 좋습니다.
-const API_KEY = `1e67ff10c1b25647efd68d70ae3e8ece`;
+const API_KEY = import.meta.env.VITE_KAKAO_REST_API_KEY;
 
 // 비동기 액션: 예를 들어 장소 검색 기능을 구현한다면
 export const fetchPlaces = createAsyncThunk('kakaoMap/fetchPlaces', async (location, thunkAPI) => {

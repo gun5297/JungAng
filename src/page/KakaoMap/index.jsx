@@ -7,8 +7,9 @@ const KakaoMap = () => {
     const { places, status } = useSelector((state) => state.kakaoMap);
 
     useEffect(() => {
+        const API_KEY = import.meta.env.VITE_KAKAO_JS_API_KEY;
         const script = document.createElement('script');
-        script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=e4dad3bfb844132fb3652661002608f9&autoload=false`;
+        script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${API_KEY}&autoload=false`;
         document.head.appendChild(script);
 
         script.onload = () => {
