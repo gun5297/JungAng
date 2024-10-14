@@ -1288,7 +1288,7 @@ Error generating stack: `+s.message+`
         flex-wrap: wrap;
     }
 `,Wb=({id:e,Bigimg:t,deposit:n,rent:r,keyword:i,title:s,type:o,nav:a})=>{const l=de();return f.jsxs(E1,{children:[f.jsx("div",{className:"img-wrap",children:f.jsx("img",{src:t,alt:s})}),f.jsxs("div",{className:"text-wrap",children:[f.jsx("p",{className:"title",children:s}),f.jsxs("p",{className:"type",children:[o," | ",n," ",r,"만원"]}),f.jsx("ul",{children:i.map((u,c)=>f.jsxs("li",{children:["#",u]},c))})]}),f.jsx("div",{className:"btn-wrap",children:f.jsx(J,{onClick:()=>l(`/${a}/${e}`),children:"자세히 보기"})})]})},Hb=()=>{const{keyword:e}=zr(),{room:t}=U(r=>r.room),n=[...t.bluectiy,...t.dupluse].filter(r=>r.keyword.some(i=>i.includes(e)));return f.jsx(Vb,{children:f.jsxs(be,{children:[f.jsxs("h2",{children:['"',e,'" 검색 결과']}),f.jsx(bg,{}),f.jsx("ul",{children:n.map((r,i)=>f.jsx(Wb,{...r},i))})]})})},Gb="1e67ff10c1b25647efd68d70ae3e8ece",Vs=Dc("kakaoMap/fetchPlaces",async(e,t)=>{try{return(await le.get("https://dapi.kakao.com/v2/local/search/keyword.json",{params:{query:e},headers:{Authorization:`KakaoAK ${Gb}`}})).data.documents}catch(n){return t.rejectWithValue(n.response.data)}}),qb=Mr({name:"kakaoMap",initialState:{places:[],status:"idle",error:null},reducers:{},extraReducers:e=>{e.addCase(Vs.pending,t=>{t.status="loading"}).addCase(Vs.fulfilled,(t,n)=>{t.status="succeeded",t.places=n.payload}).addCase(Vs.rejected,(t,n)=>{t.status="failed",t.error=n.payload})}}),Qb=qb.reducer,Kb=H.div`
-    margin: auto;
+    margin: 0px auto 80px;
     button {
         width: 33%;
         height: 60px;
