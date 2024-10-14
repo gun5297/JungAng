@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route, HashRouter, Link } from 'react-router-dom';
 import {
     Admin,
-    Findingaway,
     Information,
+    KakaoMap,
     Login,
     Main,
     Mypage,
@@ -49,7 +49,7 @@ const App = () => {
                             path='details/:category/:datanum/reservation'
                             element={<ReservationaAddForm />}
                         />
-                        <Route path='findingaway' element={<Findingaway />} />
+                        <Route path='findingaway' element={<KakaoMap />} />
                     </Route>
                     <Route path='/admin' element={<Admin />} />
                 </Routes>

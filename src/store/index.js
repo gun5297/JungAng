@@ -4,7 +4,7 @@ import qna from './modules/qnaSlice';
 import qnaTag from './modules/qnaTagSlice';
 import room from './modules/roomSlice';
 import reservation from './modules/reservationSlice';
-import map from './modules/kakaomapSlice';
+import kakaoMap from './modules/kakaomapSlice';
 
 export const store = configureStore({
     reducer: {
@@ -13,6 +13,6 @@ export const store = configureStore({
         qnaTag,
         room,
         reservation,
-        map,
+        kakaoMap,
     },
 });

@@ -3,6 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import BottomNav from './BottomNav';
 const Layout = () => {
     const { login, userID } = useSelector((state) => state.auth);
     const { qna } = useSelector((state) => state.qna);
@@ -37,6 +38,7 @@ const Layout = () => {
             <Header />
             <Outlet />
             <Footer />
+            <BottomNav />
         </>
     );
 };

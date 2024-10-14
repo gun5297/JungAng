@@ -8,4 +8,4 @@ export { default as Rservation } from './reservation';
 export { default as QnAbody } from './qnabody';
 export { default as Admin } from './admin';
 export { default as Search } from './search';
-export { default as Findingaway } from './findingaway';
+export { default as KakaoMap } from './KakaoMap';

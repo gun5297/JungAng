@@ -245,3 +245,30 @@ export const InnerWrap = styled.div`
         text-align: center;
     }
 `;
+
+export const BottomNavWrap = styled.div`
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    &.btn-wrap {
+        i {
+            display: block;
+            font-size: 30px;
+            background-color: #212121;
+            color: #fafafa;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            transform: scale(0.9);
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            opacity: 0.8;
+            &:hover {
+                transform: scale(1);
+            }
+            &:not(:last-of-type) {
+                margin-bottom: 10px;
+            }
+        }
+    }
+`;

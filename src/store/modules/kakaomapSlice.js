@@ -1,35 +1,48 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { getMap } from './getThunk';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-const initialState = {
-    isMapLoaded: false,
-    loading: false,
-    error: null,
-    address: null,
-};
+// API Key는 환경 변수로 관리하는 것이 좋습니다.
+const API_KEY = `1e67ff10c1b25647efd68d70ae3e8ece`;
 
-const kakaomapSlice = createSlice({
-    name: 'mapSlice',
-    initialState,
+// 비동기 액션: 예를 들어 장소 검색 기능을 구현한다면
+export const fetchPlaces = createAsyncThunk('kakaoMap/fetchPlaces', async (location, thunkAPI) => {
+    try {
+        const response = await axios.get(`https://dapi.kakao.com/v2/local/search/keyword.json`, {
+            params: {
+                query: location,
+            },
+            headers: {
+                Authorization: `KakaoAK ${API_KEY}`,
+            },
+        });
+        return response.data.documents; // 검색 결과 반환
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error.response.data);
+    }
+});
+
+const kakaoMapSlice = createSlice({
+    name: 'kakaoMap',
+    initialState: {
+        places: [],
+        status: 'idle',
+        error: null,
+    },
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(getMap.pending, (state) => {
-                state.loading = true;
-                state.isMapLoaded = false;
-                state.error = null;
-                state.address = null;
+            .addCase(fetchPlaces.pending, (state) => {
+                state.status = 'loading';
             })
-            .addCase(getMap.fulfilled, (state, action) => {
-                state.loading = false;
-                state.isMapLoaded = true;
-                state.address = action.payload.documents[0].address.address_name; // 변환된 주소 저장
+            .addCase(fetchPlaces.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+                state.places = action.payload;
             })
-            .addCase(getMap.rejected, (state, action) => {
-                state.loading = false;
+            .addCase(fetchPlaces.rejected, (state, action) => {
+                state.status = 'failed';
                 state.error = action.payload;
             });
     },
 });
 
-export default kakaomapSlice.reducer;
+export default kakaoMapSlice.reducer;
