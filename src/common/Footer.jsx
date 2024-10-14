@@ -10,13 +10,16 @@ const Footer = () => {
                         <Link to='details/bluectiy/1'>블루시티</Link>
                     </li>
                     <li>
-                        <Link to='details/dupluse/1'>두플러스</Link>
+                        <Link to='details/dupluse/1'>두플라스</Link>
                     </li>
                     <li>
                         <Link to='qna'>문의하기</Link>
                     </li>
                     <li>
                         <Link to='reservation'>예약확인</Link>
+                    </li>
+                    <li>
+                        <Link to='findingaway'>찾아오시는길</Link>
                     </li>
                 </ul>
                 <p>상호 : 중앙공인중개사 | 대표 : 배진희 | 사업자등록번호 : 131-32-87433</p>

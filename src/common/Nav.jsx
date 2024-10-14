@@ -17,7 +17,7 @@ const Nav = () => {
                     </li>
                     <li>
                         <Link to='details/dupluse/1'>
-                            두플러스
+                            두플라스
                             <span>전세/월세</span>
                         </Link>
                     </li>
