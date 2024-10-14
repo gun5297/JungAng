@@ -8,10 +8,9 @@ import { Button } from '../../ui/styled';
 const RoomInfo = () => {
     const { datanum, category } = useParams();
     const { room } = useSelector((state) => state.room);
-    const { isAuth } = useSelector((state) => state.auth);
     const isRoom = room[category];
     const onRoom = isRoom.find((room) => room.id === Number(datanum));
-    const { id, imgTag, img, like, deposit, rent, title, type, keyword } = onRoom;
+    const { imgTag, img, like, deposit, rent, title, type, keyword } = onRoom;
     const navigate = useNavigate();
     const imgnum = [];
     for (let i = 1; i <= img; i++) {
@@ -52,11 +51,7 @@ const RoomInfo = () => {
                         className='btn'
                         width='300px'
                         height='60px'
-                        onClick={() =>
-                            isAuth
-                                ? navigate(`/details/${category}/${datanum}/reservation`)
-                                : navigate('/login')
-                        }
+                        onClick={() => navigate(`/details/${category}/${datanum}/reservation`)}
                     >
                         예약하기
                     </Button>

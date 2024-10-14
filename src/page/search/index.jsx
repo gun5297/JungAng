@@ -11,8 +11,6 @@ const SearchList = () => {
     const onRoom = [...room['bluectiy'], ...room['dupluse']].filter((room) =>
         room.keyword.some((key) => key.includes(keyword))
     );
-
-    console.log(onRoom);
     return (
         <SearchListWrap>
             <InnerWrap>

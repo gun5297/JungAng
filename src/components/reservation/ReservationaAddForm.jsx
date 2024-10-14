@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { InnerWrap } from '../../styled/Style';
 import { Button } from '../../ui/styled';
 import { isNewRes } from '../../store/modules/reservationSlice';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const ReservationaAddForm = () => {
     const { category, datanum } = useParams();
     const { room } = useSelector((state) => state.room);
-    const { user, userID } = useSelector((state) => state.auth);
+    const { user, userID, isAuth } = useSelector((state) => state.auth);
     const { reservation } = useSelector((state) => state.reservation);
     const isRoom = room[category].find((room) => room.id === Number(datanum));
     const { id, Bigimg, title, type, deposit, rent } = isRoom;
@@ -38,6 +38,11 @@ const ReservationaAddForm = () => {
         alert(`${user}님 ${title} 예약되었습니다.`);
         navigate('/reservation');
     };
+    useEffect(() => {
+        if (!isAuth) {
+            navigate('/login');
+        }
+    }, []);
     return (
         <ReservationaAddFormWrap onSubmit={onSubmit}>
             <InnerWrap className='inner'>

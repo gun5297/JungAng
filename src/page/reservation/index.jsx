@@ -4,12 +4,18 @@ import { InnerWrap } from '../../styled/Style';
 import ReservationItem from '../../components/reservation/ReservationItem';
 import { Button } from '../../ui/styled';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Rservation = () => {
     const { reservation } = useSelector((state) => state.reservation);
-    const { userID: userid } = useSelector((state) => state.auth);
+    const { userID: userid, isAuth } = useSelector((state) => state.auth);
     const onReservation = reservation.filter((res) => res.userID === userid || userid === 'admin');
     const navigate = useNavigate();
+    useEffect(() => {
+        if (!isAuth) {
+            navigate('/login');
+        }
+    }, []);
     return (
         <RservationWrap>
             <InnerWrap>
