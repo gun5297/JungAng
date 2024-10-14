@@ -8,6 +8,7 @@ const Information = () => {
     const { category } = useParams();
     const { room } = useSelector((state) => state.room);
     const onRoom = room[category];
+
     return (
         <InformationWrap>
             <InnerWrap className='inner'>

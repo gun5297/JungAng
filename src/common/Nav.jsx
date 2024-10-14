@@ -1,13 +1,21 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { isLogout } from '../store/modules/authSlice';
+import { useEffect } from 'react';
 const Nav = () => {
     const { isAuth } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const onClick = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+    };
+
     return (
         <>
-            <div className='left'>
+            <div className='left' onClick={onClick}>
                 <ul className='nav'>
                     <li>
                         <Link to='details/bluectiy/1'>
