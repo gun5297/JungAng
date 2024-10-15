@@ -5,6 +5,7 @@ const initialState = {
     qna: JSON.parse(localStorage.getItem('JungAngQnAList')) || [],
     loading: true,
     error: null,
+    delIds: JSON.parse(localStorage.getItem('JungAngDelIds')) || [],
 };
 
 export const qnaSlice = createSlice({
@@ -24,7 +25,7 @@ export const qnaSlice = createSlice({
                 isNew: true,
             };
             state.qna.push(newQna);
-            // localStorage.setItem('JungAngQnAList', JSON.stringify(state.qna));
+            localStorage.setItem('JungAngQnAList', JSON.stringify(state.qna));
         },
         isPinChange: (state, action) => {
             const onQna = state.qna.find((qna) => qna.id === action.payload);
@@ -32,23 +33,26 @@ export const qnaSlice = createSlice({
         },
         isDelQnA: (state, action) => {
             state.qna = state.qna.filter((qna) => qna.id !== action.payload);
-            // localStorage.setItem('JungAngQnAList', JSON.stringify(state.qna));
+            state.delIds.push(action.payload);
+            localStorage.setItem('JungAngQnAList', JSON.stringify(state.qna));
+            localStorage.setItem('JungAngDelIds', JSON.stringify(state.delIds));
         },
+
         isChangeQnA: (state, action) => {
             const { contentID, title, body } = action.payload;
             const onQna = state.qna.find((qna) => qna.id === Number(contentID));
             onQna.title = title;
             onQna.body = body;
-            // localStorage.setItem('JungAngQnAList', JSON.stringify(state.qna));
+            localStorage.setItem('JungAngQnAList', JSON.stringify(state.qna));
         },
         isNewChangeQna: (state, action) => {
             const selqna = state.qna.find((qna) => qna.id === action.payload);
             selqna.isNew = false;
-            // localStorage.setItem('JungAngQnAList', JSON.stringify(state.qna));
+            localStorage.setItem('JungAngQnAList', JSON.stringify(state.qna));
         },
         allNewChangeQna: (state) => {
             state.qna = state.qna.map((qna) => ({ ...qna, isNew: false }));
-            // localStorage.setItem('JungAngQnAList', JSON.stringify(state.qna));
+            localStorage.setItem('JungAngQnAList', JSON.stringify(state.qna));
         },
     },
     extraReducers: (builder) => {
@@ -59,11 +63,14 @@ export const qnaSlice = createSlice({
             })
             .addCase(getQna.fulfilled, (state, action) => {
                 const newQna = action.payload.filter(
-                    (action) => !state.qna.find((qna) => qna.id === action.id)
+                    (qna) =>
+                        !state.qna.find((Qna) => Qna.id === qna.id) &&
+                        !state.delIds.includes(qna.id)
                 );
                 state.qna = [...state.qna, ...newQna];
                 state.loading = false;
                 state.error = null;
+
                 state.qna.sort((a, b) => {
                     const dateA = new Date(
                         a.date.year,
